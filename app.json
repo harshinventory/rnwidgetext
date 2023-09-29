@@ -11,20 +11,59 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSSupportsLiveActivities": true,
+        "NSSupportsLiveActivitiesFrequentUpdates": true
+      },
+      "bundleIdentifier": "com.rnwidgetextension"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.rnwidgetextension"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "react-native-widget-extension",
+        {
+          "frequentUpdates": true,
+          "widgetsFolder": "PizzaDeliveryWidgets"
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "16.2"
+          }
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "build": {
+          "experimental": {
+            "ios": {
+              "appExtensions": [
+                {
+                  "targetName": "rnwidgetextensionWidgets",
+                  "bundleIdentifier": "undefined.rnwidgetextensionWidgets",
+                  "entitlements": {}
+                }
+              ]
+            }
+          }
+        },
+        "projectId": "0633ec02-928a-4fad-9b9e-bfcf249c81aa"
+      }
     }
   }
 }
